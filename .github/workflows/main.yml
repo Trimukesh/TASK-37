@@ -3,7 +3,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
      - uses: trstringer/manual-approval@v1
        with:
@@ -11,6 +10,5 @@ jobs:
           approvers: DominatorGG
           minimum approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
-      
      - name: Run a one-line script
        run: echo Hello, world!
