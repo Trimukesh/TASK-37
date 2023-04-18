@@ -1,25 +1,16 @@
-name: Environmental Approval to run a java program.
+name: Manual Approval
 on: [push, pull_request]
-
 jobs:
-  deployment:
+  build:
     runs-on: ubuntu-latest
-    environment: Dev_Environment
-    steps:
     
-      - name: Workflow Approval
-        uses: trstringer/manual-approval@v1
-        with:
+    steps:
+     - uses: trstringer/manual-approval@v1
+       with:
           secret: ${{ github.TOKEN }}
-          approvers: skrafiq, DominatorGG
-          minimum-approvals: 1 
+          approvers: DominatorGG, skrafiq
+          minimum approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.11
-      - name: Run the java file
-        run: |
-             javac factorial.java
-             java factorial
+      
+     - name: Run a one-line script
+       run: echo Hello, world!
